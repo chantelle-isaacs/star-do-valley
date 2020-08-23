@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @bundle.name %>
+</p>
+
+<p>
+  <strong>Reward:</strong>
+  <%= @bundle.reward %>
+</p>
+
+<p>
+  <strong>Room:</strong>
+  <%= @bundle.room_id %>
+</p>
+
+<%= link_to 'Edit', edit_bundle_path(@bundle) %> |
+<%= link_to 'Back', bundles_path %>

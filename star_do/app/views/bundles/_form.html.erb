@@ -1,0 +1,32 @@
+<%= form_with(model: bundle, local: true) do |form| %>
+  <% if bundle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(bundle.errors.count, "error") %> prohibited this bundle from being saved:</h2>
+
+      <ul>
+        <% bundle.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reward %>
+    <%= form.text_field :reward %>
+  </div>
+
+  <div class="field">
+    <%= form.label :room_id %>
+    <%= form.number_field :room_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
