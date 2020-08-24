@@ -613,3 +613,771 @@ Migrating to AddQualityToItems (20200823224211)
   [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(8148945271765847220)[0m
   [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (4.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (47.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "star_do_development"[0m
+  [1m[35m (27.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "star_do_test"[0m
+  [1m[35m (132.1ms)[0m  [1m[35mCREATE DATABASE "star_do_development" ENCODING = 'unicode'[0m
+  [1m[35m (80.1ms)[0m  [1m[35mCREATE DATABASE "star_do_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (1.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "bundles" CASCADE[0m
+  [1m[35m (11.2ms)[0m  [1m[35mCREATE TABLE "bundles" ("id" bigserial primary key, "name" character varying, "reward" character varying, "room_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "items" CASCADE[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "items" ("id" bigserial primary key, "name" character varying, "type" character varying, "purchase" boolean, "location" character varying, "time" character varying, "weather" character varying, "season" character varying, "quantity" integer, "note" text, "bundle_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "quality" character varying)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "rooms" CASCADE[0m
+  [1m[35m (8.2ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" bigserial primary key, "name" character varying, "reward" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200823224211)[0m
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200823213737),
+(20200823213806),
+(20200823213904);
+
+[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-08-23 22:47:51.898042"], ["updated_at", "2020-08-23 22:47:51.898042"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "92f6fbe993355819cff42a499f1045423ae8c48c"], ["created_at", "2020-08-23 22:47:51.905782"], ["updated_at", "2020-08-23 22:47:51.905782"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "bundles" CASCADE[0m
+  [1m[35m (6.5ms)[0m  [1m[35mCREATE TABLE "bundles" ("id" bigserial primary key, "name" character varying, "reward" character varying, "room_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "items" CASCADE[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "items" ("id" bigserial primary key, "name" character varying, "type" character varying, "purchase" boolean, "location" character varying, "time" character varying, "weather" character varying, "season" character varying, "quantity" integer, "note" text, "bundle_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "quality" character varying)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "rooms" CASCADE[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" bigserial primary key, "name" character varying, "reward" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200823224211)[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200823213737),
+(20200823213806),
+(20200823213904);
+
+[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-08-23 22:47:51.973716"], ["updated_at", "2020-08-23 22:47:51.973716"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (1.9ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-08-23 22:47:51.979387"], ["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "92f6fbe993355819cff42a499f1045423ae8c48c"], ["created_at", "2020-08-23 22:47:51.986346"], ["updated_at", "2020-08-23 22:47:51.986346"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.8ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "reward", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Crafts"], ["reward", "Bridge Repair"], ["created_at", "2020-08-23 22:47:52.038232"], ["updated_at", "2020-08-23 22:47:52.038232"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "reward", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Pantry"], ["reward", "Greenhouse"], ["created_at", "2020-08-23 22:47:52.042579"], ["updated_at", "2020-08-23 22:47:52.042579"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "reward", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Fish Tank"], ["reward", "Glittering Boulder Removed"], ["created_at", "2020-08-23 22:47:52.046023"], ["updated_at", "2020-08-23 22:47:52.046023"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.2ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "reward", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Boiler"], ["reward", "Minecarts Repair"], ["created_at", "2020-08-23 22:47:52.049259"], ["updated_at", "2020-08-23 22:47:52.049259"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "reward", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Bulletin Board"], ["reward", "Friendship"], ["created_at", "2020-08-23 22:47:52.052497"], ["updated_at", "2020-08-23 22:47:52.052497"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "reward", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Vault"], ["reward", "Bus Repair"], ["created_at", "2020-08-23 22:47:52.055787"], ["updated_at", "2020-08-23 22:47:52.055787"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "reward", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Abandoned JojaMart"], ["reward", "Movie Theater"], ["created_at", "2020-08-23 22:47:52.059069"], ["updated_at", "2020-08-23 22:47:52.059069"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRoom Load (0.4ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.1ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.6ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Spring Foraging"], ["reward", "Spring Seeds"], ["room_id", 1], ["created_at", "2020-08-23 22:47:52.099377"], ["updated_at", "2020-08-23 22:47:52.099377"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Summer Foraging"], ["reward", "Summer Seeds"], ["room_id", 1], ["created_at", "2020-08-23 22:47:52.104078"], ["updated_at", "2020-08-23 22:47:52.104078"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Fall Foraging"], ["reward", "Fall Seeds"], ["room_id", 1], ["created_at", "2020-08-23 22:47:52.107686"], ["updated_at", "2020-08-23 22:47:52.107686"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.2ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Winter Foraging"], ["reward", "Winter Seeds"], ["room_id", 1], ["created_at", "2020-08-23 22:47:52.111147"], ["updated_at", "2020-08-23 22:47:52.111147"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Construction"], ["reward", "Charcoal Kiln"], ["room_id", 1], ["created_at", "2020-08-23 22:47:52.114985"], ["updated_at", "2020-08-23 22:47:52.114985"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Exotic Foraging"], ["reward", "Autumns Bounty"], ["room_id", 1], ["created_at", "2020-08-23 22:47:52.122836"], ["updated_at", "2020-08-23 22:47:52.122836"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Spring Crops"], ["reward", "Speed-Gro"], ["room_id", 2], ["created_at", "2020-08-23 22:47:52.126720"], ["updated_at", "2020-08-23 22:47:52.126720"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Summer Crops"], ["reward", "Quality Sprinkler"], ["room_id", 2], ["created_at", "2020-08-23 22:47:52.130413"], ["updated_at", "2020-08-23 22:47:52.130413"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.2ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Fall Crops"], ["reward", "Bee House"], ["room_id", 2], ["created_at", "2020-08-23 22:47:52.134414"], ["updated_at", "2020-08-23 22:47:52.134414"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Quality Crops"], ["reward", "Preserves Jar"], ["room_id", 2], ["created_at", "2020-08-23 22:47:52.138325"], ["updated_at", "2020-08-23 22:47:52.138325"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Animal"], ["reward", "Cheese Press"], ["room_id", 2], ["created_at", "2020-08-23 22:47:52.142538"], ["updated_at", "2020-08-23 22:47:52.142538"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Artisan"], ["reward", "Keg"], ["room_id", 2], ["created_at", "2020-08-23 22:47:52.146674"], ["updated_at", "2020-08-23 22:47:52.146674"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "River Fish"], ["reward", "Bait"], ["room_id", 3], ["created_at", "2020-08-23 22:47:52.150557"], ["updated_at", "2020-08-23 22:47:52.150557"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.2ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Lake Fish"], ["reward", "Dressed Spinner"], ["room_id", 3], ["created_at", "2020-08-23 22:47:52.154043"], ["updated_at", "2020-08-23 22:47:52.154043"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.4ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Ocean Fish"], ["reward", "Warp Totem: Beach"], ["room_id", 3], ["created_at", "2020-08-23 22:47:52.157632"], ["updated_at", "2020-08-23 22:47:52.157632"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Night Fishing"], ["reward", "Small Glow Ring"], ["room_id", 3], ["created_at", "2020-08-23 22:47:52.161480"], ["updated_at", "2020-08-23 22:47:52.161480"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Crab Pot"], ["reward", "Crab Pot"], ["room_id", 3], ["created_at", "2020-08-23 22:47:52.165477"], ["updated_at", "2020-08-23 22:47:52.165477"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Specialty Fish"], ["reward", "Dish O The Sea"], ["room_id", 3], ["created_at", "2020-08-23 22:47:52.169106"], ["updated_at", "2020-08-23 22:47:52.169106"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Blacksmiths"], ["reward", "Furnace"], ["room_id", 4], ["created_at", "2020-08-23 22:47:52.172845"], ["updated_at", "2020-08-23 22:47:52.172845"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Geologists"], ["reward", "Omni Geode"], ["room_id", 4], ["created_at", "2020-08-23 22:47:52.176691"], ["updated_at", "2020-08-23 22:47:52.176691"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Adventurers"], ["reward", "Small Magnet Ring"], ["room_id", 4], ["created_at", "2020-08-23 22:47:52.180583"], ["updated_at", "2020-08-23 22:47:52.180583"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Chefs"], ["reward", "Pink Cake"], ["room_id", 5], ["created_at", "2020-08-23 22:47:52.184752"], ["updated_at", "2020-08-23 22:47:52.184752"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Dye"], ["reward", "Seed Maker"], ["room_id", 5], ["created_at", "2020-08-23 22:47:52.188246"], ["updated_at", "2020-08-23 22:47:52.188246"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Field Research"], ["reward", "Recycling Machine"], ["room_id", 5], ["created_at", "2020-08-23 22:47:52.191861"], ["updated_at", "2020-08-23 22:47:52.191861"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.2ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Fodder"], ["reward", "Heater"], ["room_id", 5], ["created_at", "2020-08-23 22:47:52.195690"], ["updated_at", "2020-08-23 22:47:52.195690"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Enchanters"], ["reward", "Gold Bar"], ["room_id", 5], ["created_at", "2020-08-23 22:47:52.199467"], ["updated_at", "2020-08-23 22:47:52.199467"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "2500"], ["reward", "Choclate Cake"], ["room_id", 6], ["created_at", "2020-08-23 22:47:52.203579"], ["updated_at", "2020-08-23 22:47:52.203579"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "5000"], ["reward", "Quality Fertilizer"], ["room_id", 6], ["created_at", "2020-08-23 22:47:52.207371"], ["updated_at", "2020-08-23 22:47:52.207371"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.4ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "10000"], ["reward", "Lightning Rod"], ["room_id", 6], ["created_at", "2020-08-23 22:47:52.211281"], ["updated_at", "2020-08-23 22:47:52.211281"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "25000"], ["reward", "Crystalarium"], ["room_id", 6], ["created_at", "2020-08-23 22:47:52.215418"], ["updated_at", "2020-08-23 22:47:52.215418"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "The Missing"], ["reward", "Movie Theater"], ["room_id", 7], ["created_at", "2020-08-23 22:47:52.219650"], ["updated_at", "2020-08-23 22:47:52.219650"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8148945271765847220)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddSlotNumberToBundles (20200824002110)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.3ms)[0m  [1m[35mALTER TABLE "bundles" ADD "slots" integer[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200824002110"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8148945271765847220)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8148945271765847220)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to BreakUpTypesAndSeasonsInItems (20200824003607)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.6ms)[0m  [1m[35mALTER TABLE "item" DROP COLUMN "type"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(8148945271765847220)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8148945271765847220)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to BreakUpTypesAndSeasonsInItems (20200824003607)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.3ms)[0m  [1m[35mALTER TABLE "items" DROP COLUMN "type"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "items" DROP COLUMN "season"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" DROP COLUMN "time"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "items" DROP COLUMN "location"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "items" DROP COLUMN "weather"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "farm" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "forage" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "fish" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "artisan" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "mine" boolean[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "items" ADD "monster" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "crab_pot" boolean[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "items" ADD "misc" boolean[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "items" ADD "spring" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "summer" boolean[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "items" ADD "fall" boolean[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "items" ADD "winter" boolean[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "items" ADD "morning" boolean[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "items" ADD "noon" boolean[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "items" ADD "afternoon" boolean[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "items" ADD "night" boolean[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "items" ADD "river_town" boolean[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "items" ADD "river_forest" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "mountain_lake" boolean[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "items" ADD "mines" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "secret_woods" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "cindersap_forest" boolean[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "items" ADD "bus_stop" boolean[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "items" ADD "beach" boolean[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "items" ADD "mountain" boolean[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "items" ADD "railroad" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "quarry" boolean[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "items" ADD "farm" boolean[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(8148945271765847220)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8148945271765847220)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to BreakUpTypesAndSeasonsInItems (20200824003607)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "items" DROP COLUMN "type"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "items" DROP COLUMN "season"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" DROP COLUMN "time"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" DROP COLUMN "location"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" DROP COLUMN "weather"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "farm" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "forage" boolean[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "items" ADD "fish" boolean[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "items" ADD "artisan" boolean[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "items" ADD "mine" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "monster" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "crab_pot" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "misc" boolean[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "items" ADD "spring" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "summer" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "fall" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "winter" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "morning" boolean[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "items" ADD "noon" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "afternoon" boolean[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "items" ADD "night" boolean[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "items" ADD "location_river_town" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "location_river_forest" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "location_mountain_lake" boolean[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "items" ADD "location_mines" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "location_secret_woods" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "location_cindersap_forest" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "location_bus_stop" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "location_beach" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "location_mountain" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "location_railroad" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "location_quarry" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "location_farm" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "location_forest_pond" boolean[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "items" ADD "location_witchs_swamp" boolean[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "items" ADD "location_desert" boolean[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "items" ADD "sun" boolean[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "items" ADD "rain" boolean[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200824003607"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8148945271765847220)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8148945271765847220)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to SetBooleanDefaultToFalseForItems (20200824011450)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.0ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "farm" TYPE boolean, ALTER COLUMN "farm" SET DEFAULT FALSE[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "forage" TYPE boolean, ALTER COLUMN "forage" SET DEFAULT FALSE[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "fish" TYPE boolean, ALTER COLUMN "fish" SET DEFAULT FALSE[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "artisan" TYPE boolean, ALTER COLUMN "artisan" SET DEFAULT FALSE[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "mine" TYPE boolean, ALTER COLUMN "mine" SET DEFAULT FALSE[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "monster" TYPE boolean, ALTER COLUMN "monster" SET DEFAULT FALSE[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "crab_pot" TYPE boolean, ALTER COLUMN "crab_pot" SET DEFAULT FALSE[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "misc" TYPE boolean, ALTER COLUMN "misc" SET DEFAULT FALSE[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "spring" TYPE boolean, ALTER COLUMN "spring" SET DEFAULT FALSE[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "summer" TYPE boolean, ALTER COLUMN "summer" SET DEFAULT FALSE[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "fall" TYPE boolean, ALTER COLUMN "fall" SET DEFAULT FALSE[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "winter" TYPE boolean, ALTER COLUMN "winter" SET DEFAULT FALSE[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "morning" TYPE boolean, ALTER COLUMN "morning" SET DEFAULT FALSE[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "noon" TYPE boolean, ALTER COLUMN "noon" SET DEFAULT FALSE[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "afternoon" TYPE boolean, ALTER COLUMN "afternoon" SET DEFAULT FALSE[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "night" TYPE boolean, ALTER COLUMN "night" SET DEFAULT FALSE[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "location_river_town" TYPE boolean, ALTER COLUMN "location_river_town" SET DEFAULT FALSE[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "location_river_forest" TYPE boolean, ALTER COLUMN "location_river_forest" SET DEFAULT FALSE[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "location_mountain_lake" TYPE boolean, ALTER COLUMN "location_mountain_lake" SET DEFAULT FALSE[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "location_mines" TYPE boolean, ALTER COLUMN "location_mines" SET DEFAULT FALSE[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "location_secret_woods" TYPE boolean, ALTER COLUMN "location_secret_woods" SET DEFAULT FALSE[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "location_cindersap_forest" TYPE boolean, ALTER COLUMN "location_cindersap_forest" SET DEFAULT FALSE[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "location_bus_stop" TYPE boolean, ALTER COLUMN "location_bus_stop" SET DEFAULT FALSE[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "location_beach" TYPE boolean, ALTER COLUMN "location_beach" SET DEFAULT FALSE[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "location_mountain" TYPE boolean, ALTER COLUMN "location_mountain" SET DEFAULT FALSE[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "location_railroad" TYPE boolean, ALTER COLUMN "location_railroad" SET DEFAULT FALSE[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "location_quarry" TYPE boolean, ALTER COLUMN "location_quarry" SET DEFAULT FALSE[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "location_farm" TYPE boolean, ALTER COLUMN "location_farm" SET DEFAULT FALSE[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "location_forest_pond" TYPE boolean, ALTER COLUMN "location_forest_pond" SET DEFAULT FALSE[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "location_witchs_swamp" TYPE boolean, ALTER COLUMN "location_witchs_swamp" SET DEFAULT FALSE[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "location_desert" TYPE boolean, ALTER COLUMN "location_desert" SET DEFAULT FALSE[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "sun" TYPE boolean, ALTER COLUMN "sun" SET DEFAULT FALSE[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "rain" TYPE boolean, ALTER COLUMN "rain" SET DEFAULT FALSE[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200824011450"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8148945271765847220)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8148945271765847220)[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangeTimeBooleanDefaultToTrueInItems (20200824012300)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.8ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "morning" TYPE boolean, ALTER COLUMN "morning" SET DEFAULT TRUE[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "noon" TYPE boolean, ALTER COLUMN "noon" SET DEFAULT TRUE[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "afternoon" TYPE boolean, ALTER COLUMN "afternoon" SET DEFAULT TRUE[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "night" TYPE boolean, ALTER COLUMN "night" SET DEFAULT TRUE[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "sun" TYPE boolean, ALTER COLUMN "sun" SET DEFAULT TRUE[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "rain" TYPE boolean, ALTER COLUMN "rain" SET DEFAULT TRUE[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "purchase" TYPE boolean, ALTER COLUMN "purchase" SET DEFAULT FALSE[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "quantity" TYPE integer, ALTER COLUMN "quantity" SET DEFAULT 1[0m
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "quality" TYPE character varying, ALTER COLUMN "quality" SET DEFAULT 'any'[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "items" ALTER COLUMN "note" TYPE text, ALTER COLUMN "note" SET DEFAULT '', ALTER COLUMN "note" SET NOT NULL[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200824012300"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8148945271765847220)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (37.0ms)[0m  [1m[35mDROP DATABASE IF EXISTS "star_do_development"[0m
+  [1m[35m (32.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "star_do_test"[0m
+  [1m[35m (142.1ms)[0m  [1m[35mCREATE DATABASE "star_do_development" ENCODING = 'unicode'[0m
+  [1m[35m (55.4ms)[0m  [1m[35mCREATE DATABASE "star_do_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "bundles" CASCADE[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE TABLE "bundles" ("id" bigserial primary key, "name" character varying, "reward" character varying, "room_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "slots" integer)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "items" CASCADE[0m
+  [1m[35m (10.2ms)[0m  [1m[35mCREATE TABLE "items" ("id" bigserial primary key, "name" character varying, "purchase" boolean DEFAULT FALSE, "quantity" integer DEFAULT 1, "note" text DEFAULT '' NOT NULL, "bundle_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "quality" character varying DEFAULT 'any', "farm" boolean DEFAULT FALSE, "forage" boolean DEFAULT FALSE, "fish" boolean DEFAULT FALSE, "artisan" boolean DEFAULT FALSE, "mine" boolean DEFAULT FALSE, "monster" boolean DEFAULT FALSE, "crab_pot" boolean DEFAULT FALSE, "misc" boolean DEFAULT FALSE, "spring" boolean DEFAULT FALSE, "summer" boolean DEFAULT FALSE, "fall" boolean DEFAULT FALSE, "winter" boolean DEFAULT FALSE, "morning" boolean DEFAULT TRUE, "noon" boolean DEFAULT TRUE, "afternoon" boolean DEFAULT TRUE, "night" boolean DEFAULT TRUE, "location_river_town" boolean DEFAULT FALSE, "location_river_forest" boolean DEFAULT FALSE, "location_mountain_lake" boolean DEFAULT FALSE, "location_mines" boolean DEFAULT FALSE, "location_secret_woods" boolean DEFAULT FALSE, "location_cindersap_forest" boolean DEFAULT FALSE, "location_bus_stop" boolean DEFAULT FALSE, "location_beach" boolean DEFAULT FALSE, "location_mountain" boolean DEFAULT FALSE, "location_railroad" boolean DEFAULT FALSE, "location_quarry" boolean DEFAULT FALSE, "location_farm" boolean DEFAULT FALSE, "location_forest_pond" boolean DEFAULT FALSE, "location_witchs_swamp" boolean DEFAULT FALSE, "location_desert" boolean DEFAULT FALSE, "sun" boolean DEFAULT TRUE, "rain" boolean DEFAULT TRUE)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "rooms" CASCADE[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" bigserial primary key, "name" character varying, "reward" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200824012300)[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200823213737),
+(20200823213806),
+(20200823213904),
+(20200823224211),
+(20200824002110),
+(20200824003607),
+(20200824011450);
+
+[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-08-24 01:32:07.072715"], ["updated_at", "2020-08-24 01:32:07.072715"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "98704b6dfc1b564c0b27d6ac58c28c7ea7c3bce2"], ["created_at", "2020-08-24 01:32:07.081671"], ["updated_at", "2020-08-24 01:32:07.081671"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "bundles" CASCADE[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE "bundles" ("id" bigserial primary key, "name" character varying, "reward" character varying, "room_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "slots" integer)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "items" CASCADE[0m
+  [1m[35m (11.4ms)[0m  [1m[35mCREATE TABLE "items" ("id" bigserial primary key, "name" character varying, "purchase" boolean DEFAULT FALSE, "quantity" integer DEFAULT 1, "note" text DEFAULT '' NOT NULL, "bundle_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "quality" character varying DEFAULT 'any', "farm" boolean DEFAULT FALSE, "forage" boolean DEFAULT FALSE, "fish" boolean DEFAULT FALSE, "artisan" boolean DEFAULT FALSE, "mine" boolean DEFAULT FALSE, "monster" boolean DEFAULT FALSE, "crab_pot" boolean DEFAULT FALSE, "misc" boolean DEFAULT FALSE, "spring" boolean DEFAULT FALSE, "summer" boolean DEFAULT FALSE, "fall" boolean DEFAULT FALSE, "winter" boolean DEFAULT FALSE, "morning" boolean DEFAULT TRUE, "noon" boolean DEFAULT TRUE, "afternoon" boolean DEFAULT TRUE, "night" boolean DEFAULT TRUE, "location_river_town" boolean DEFAULT FALSE, "location_river_forest" boolean DEFAULT FALSE, "location_mountain_lake" boolean DEFAULT FALSE, "location_mines" boolean DEFAULT FALSE, "location_secret_woods" boolean DEFAULT FALSE, "location_cindersap_forest" boolean DEFAULT FALSE, "location_bus_stop" boolean DEFAULT FALSE, "location_beach" boolean DEFAULT FALSE, "location_mountain" boolean DEFAULT FALSE, "location_railroad" boolean DEFAULT FALSE, "location_quarry" boolean DEFAULT FALSE, "location_farm" boolean DEFAULT FALSE, "location_forest_pond" boolean DEFAULT FALSE, "location_witchs_swamp" boolean DEFAULT FALSE, "location_desert" boolean DEFAULT FALSE, "sun" boolean DEFAULT TRUE, "rain" boolean DEFAULT TRUE)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "rooms" CASCADE[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" bigserial primary key, "name" character varying, "reward" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200824012300)[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200823213737),
+(20200823213806),
+(20200823213904),
+(20200823224211),
+(20200824002110),
+(20200824003607),
+(20200824011450);
+
+[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-08-24 01:32:07.170858"], ["updated_at", "2020-08-24 01:32:07.170858"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-08-24 01:32:07.176673"], ["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "98704b6dfc1b564c0b27d6ac58c28c7ea7c3bce2"], ["created_at", "2020-08-24 01:32:07.187542"], ["updated_at", "2020-08-24 01:32:07.187542"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (1.1ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "reward", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Crafts"], ["reward", "Bridge Repair"], ["created_at", "2020-08-24 01:32:07.250799"], ["updated_at", "2020-08-24 01:32:07.250799"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "reward", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Pantry"], ["reward", "Greenhouse"], ["created_at", "2020-08-24 01:32:07.256079"], ["updated_at", "2020-08-24 01:32:07.256079"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "reward", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Fish Tank"], ["reward", "Glittering Boulder Removed"], ["created_at", "2020-08-24 01:32:07.259344"], ["updated_at", "2020-08-24 01:32:07.259344"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "reward", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Boiler"], ["reward", "Minecarts Repair"], ["created_at", "2020-08-24 01:32:07.263374"], ["updated_at", "2020-08-24 01:32:07.263374"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "reward", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Bulletin Board"], ["reward", "Friendship"], ["created_at", "2020-08-24 01:32:07.266669"], ["updated_at", "2020-08-24 01:32:07.266669"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.5ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "reward", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Vault"], ["reward", "Bus Repair"], ["created_at", "2020-08-24 01:32:07.270341"], ["updated_at", "2020-08-24 01:32:07.270341"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "reward", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Abandoned JojaMart"], ["reward", "Movie Theater"], ["created_at", "2020-08-24 01:32:07.274883"], ["updated_at", "2020-08-24 01:32:07.274883"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.7ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Spring Foraging"], ["reward", "Spring Seeds"], ["room_id", 1], ["created_at", "2020-08-24 01:32:07.316060"], ["updated_at", "2020-08-24 01:32:07.316060"], ["slots", 4]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.4ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Summer Foraging"], ["reward", "Summer Seeds"], ["room_id", 1], ["created_at", "2020-08-24 01:32:07.321463"], ["updated_at", "2020-08-24 01:32:07.321463"], ["slots", 3]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Fall Foraging"], ["reward", "Fall Seeds"], ["room_id", 1], ["created_at", "2020-08-24 01:32:07.326220"], ["updated_at", "2020-08-24 01:32:07.326220"], ["slots", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.5ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Winter Foraging"], ["reward", "Winter Seeds"], ["room_id", 1], ["created_at", "2020-08-24 01:32:07.331063"], ["updated_at", "2020-08-24 01:32:07.331063"], ["slots", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Construction"], ["reward", "Charcoal Kiln"], ["room_id", 1], ["created_at", "2020-08-24 01:32:07.337503"], ["updated_at", "2020-08-24 01:32:07.337503"], ["slots", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.4ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Exotic Foraging"], ["reward", "Autumns Bounty"], ["room_id", 1], ["created_at", "2020-08-24 01:32:07.343017"], ["updated_at", "2020-08-24 01:32:07.343017"], ["slots", 5]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Spring Crops"], ["reward", "Speed-Gro"], ["room_id", 2], ["created_at", "2020-08-24 01:32:07.348632"], ["updated_at", "2020-08-24 01:32:07.348632"], ["slots", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.5ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Summer Crops"], ["reward", "Quality Sprinkler"], ["room_id", 2], ["created_at", "2020-08-24 01:32:07.353046"], ["updated_at", "2020-08-24 01:32:07.353046"], ["slots", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Fall Crops"], ["reward", "Bee House"], ["room_id", 2], ["created_at", "2020-08-24 01:32:07.358648"], ["updated_at", "2020-08-24 01:32:07.358648"], ["slots", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Quality Crops"], ["reward", "Preserves Jar"], ["room_id", 2], ["created_at", "2020-08-24 01:32:07.363537"], ["updated_at", "2020-08-24 01:32:07.363537"], ["slots", 3]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Animal"], ["reward", "Cheese Press"], ["room_id", 2], ["created_at", "2020-08-24 01:32:07.367729"], ["updated_at", "2020-08-24 01:32:07.367729"], ["slots", 5]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Artisan"], ["reward", "Keg"], ["room_id", 2], ["created_at", "2020-08-24 01:32:07.374680"], ["updated_at", "2020-08-24 01:32:07.374680"], ["slots", 6]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.4ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "River Fish"], ["reward", "Bait"], ["room_id", 3], ["created_at", "2020-08-24 01:32:07.378783"], ["updated_at", "2020-08-24 01:32:07.378783"], ["slots", 4]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.6ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Lake Fish"], ["reward", "Dressed Spinner"], ["room_id", 3], ["created_at", "2020-08-24 01:32:07.384217"], ["updated_at", "2020-08-24 01:32:07.384217"], ["slots", 4]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.5ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Ocean Fish"], ["reward", "Warp Totem: Beach"], ["room_id", 3], ["created_at", "2020-08-24 01:32:07.391208"], ["updated_at", "2020-08-24 01:32:07.391208"], ["slots", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.4ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Night Fishing"], ["reward", "Small Glow Ring"], ["room_id", 3], ["created_at", "2020-08-24 01:32:07.397504"], ["updated_at", "2020-08-24 01:32:07.397504"], ["slots", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.5ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Crab Pot"], ["reward", "Crab Pot"], ["room_id", 3], ["created_at", "2020-08-24 01:32:07.401966"], ["updated_at", "2020-08-24 01:32:07.401966"], ["slots", 5]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.4ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Specialty Fish"], ["reward", "Dish O The Sea"], ["room_id", 3], ["created_at", "2020-08-24 01:32:07.406723"], ["updated_at", "2020-08-24 01:32:07.406723"], ["slots", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.4ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Blacksmiths"], ["reward", "Furnace"], ["room_id", 4], ["created_at", "2020-08-24 01:32:07.410727"], ["updated_at", "2020-08-24 01:32:07.410727"], ["slots", 3]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Geologists"], ["reward", "Omni Geode"], ["room_id", 4], ["created_at", "2020-08-24 01:32:07.414860"], ["updated_at", "2020-08-24 01:32:07.414860"], ["slots", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.4ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Adventurers"], ["reward", "Small Magnet Ring"], ["room_id", 4], ["created_at", "2020-08-24 01:32:07.418812"], ["updated_at", "2020-08-24 01:32:07.418812"], ["slots", 2]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Chefs"], ["reward", "Pink Cake"], ["room_id", 5], ["created_at", "2020-08-24 01:32:07.424039"], ["updated_at", "2020-08-24 01:32:07.424039"], ["slots", 6]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Dye"], ["reward", "Seed Maker"], ["room_id", 5], ["created_at", "2020-08-24 01:32:07.428118"], ["updated_at", "2020-08-24 01:32:07.428118"], ["slots", 6]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.6ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Field Research"], ["reward", "Recycling Machine"], ["room_id", 5], ["created_at", "2020-08-24 01:32:07.436756"], ["updated_at", "2020-08-24 01:32:07.436756"], ["slots", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.4ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Fodder"], ["reward", "Heater"], ["room_id", 5], ["created_at", "2020-08-24 01:32:07.443665"], ["updated_at", "2020-08-24 01:32:07.443665"], ["slots", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Enchanters"], ["reward", "Gold Bar"], ["room_id", 5], ["created_at", "2020-08-24 01:32:07.448843"], ["updated_at", "2020-08-24 01:32:07.448843"], ["slots", 4]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.4ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "2500"], ["reward", "Choclate Cake"], ["room_id", 6], ["created_at", "2020-08-24 01:32:07.453386"], ["updated_at", "2020-08-24 01:32:07.453386"], ["slots", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "5000"], ["reward", "Quality Fertilizer"], ["room_id", 6], ["created_at", "2020-08-24 01:32:07.458004"], ["updated_at", "2020-08-24 01:32:07.458004"], ["slots", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "10000"], ["reward", "Lightning Rod"], ["room_id", 6], ["created_at", "2020-08-24 01:32:07.462607"], ["updated_at", "2020-08-24 01:32:07.462607"], ["slots", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.4ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "25000"], ["reward", "Crystalarium"], ["room_id", 6], ["created_at", "2020-08-24 01:32:07.466871"], ["updated_at", "2020-08-24 01:32:07.466871"], ["slots", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "The Missing"], ["reward", "Movie Theater"], ["room_id", 7], ["created_at", "2020-08-24 01:32:07.471925"], ["updated_at", "2020-08-24 01:32:07.471925"], ["slots", 5]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mBundle Load (0.4ms)[0m  [1m[34mSELECT "bundles".* FROM "bundles" WHERE "bundles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBundle Load (0.3ms)[0m  [1m[34mSELECT "bundles".* FROM "bundles" WHERE "bundles"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBundle Load (0.3ms)[0m  [1m[34mSELECT "bundles".* FROM "bundles" WHERE "bundles"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mBundle Load (0.3ms)[0m  [1m[34mSELECT "bundles".* FROM "bundles" WHERE "bundles"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mBundle Load (0.3ms)[0m  [1m[34mSELECT "bundles".* FROM "bundles" WHERE "bundles"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mBundle Load (0.3ms)[0m  [1m[34mSELECT "bundles".* FROM "bundles" WHERE "bundles"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Create (1.1ms)[0m  [1m[32mINSERT INTO "items" ("name", "bundle_id", "created_at", "updated_at", "farm", "forage", "spring", "location_secret_woods", "location_cindersap_forest", "location_bus_stop", "location_mountain", "location_railroad", "location_farm") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13) RETURNING "id"[0m  [["name", "Wild Horseradish"], ["bundle_id", 1], ["created_at", "2020-08-24 01:32:07.541516"], ["updated_at", "2020-08-24 01:32:07.541516"], ["farm", true], ["forage", true], ["spring", true], ["location_secret_woods", true], ["location_cindersap_forest", true], ["location_bus_stop", true], ["location_mountain", true], ["location_railroad", true], ["location_farm", true]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (26.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "star_do_development"[0m
+  [1m[35m (25.5ms)[0m  [1m[35mDROP DATABASE IF EXISTS "star_do_test"[0m
+  [1m[35m (205.2ms)[0m  [1m[35mCREATE DATABASE "star_do_development" ENCODING = 'unicode'[0m
+  [1m[35m (55.7ms)[0m  [1m[35mCREATE DATABASE "star_do_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "bundles" CASCADE[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE TABLE "bundles" ("id" bigserial primary key, "name" character varying, "reward" character varying, "room_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "slots" integer)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "items" CASCADE[0m
+  [1m[35m (10.8ms)[0m  [1m[35mCREATE TABLE "items" ("id" bigserial primary key, "name" character varying, "purchase" boolean DEFAULT FALSE, "quantity" integer DEFAULT 1, "note" text DEFAULT '' NOT NULL, "bundle_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "quality" character varying DEFAULT 'any', "farm" boolean DEFAULT FALSE, "forage" boolean DEFAULT FALSE, "fish" boolean DEFAULT FALSE, "artisan" boolean DEFAULT FALSE, "mine" boolean DEFAULT FALSE, "monster" boolean DEFAULT FALSE, "crab_pot" boolean DEFAULT FALSE, "misc" boolean DEFAULT FALSE, "spring" boolean DEFAULT FALSE, "summer" boolean DEFAULT FALSE, "fall" boolean DEFAULT FALSE, "winter" boolean DEFAULT FALSE, "morning" boolean DEFAULT TRUE, "noon" boolean DEFAULT TRUE, "afternoon" boolean DEFAULT TRUE, "night" boolean DEFAULT TRUE, "location_river_town" boolean DEFAULT FALSE, "location_river_forest" boolean DEFAULT FALSE, "location_mountain_lake" boolean DEFAULT FALSE, "location_mines" boolean DEFAULT FALSE, "location_secret_woods" boolean DEFAULT FALSE, "location_cindersap_forest" boolean DEFAULT FALSE, "location_bus_stop" boolean DEFAULT FALSE, "location_beach" boolean DEFAULT FALSE, "location_mountain" boolean DEFAULT FALSE, "location_railroad" boolean DEFAULT FALSE, "location_quarry" boolean DEFAULT FALSE, "location_farm" boolean DEFAULT FALSE, "location_forest_pond" boolean DEFAULT FALSE, "location_witchs_swamp" boolean DEFAULT FALSE, "location_desert" boolean DEFAULT FALSE, "sun" boolean DEFAULT TRUE, "rain" boolean DEFAULT TRUE)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "rooms" CASCADE[0m
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" bigserial primary key, "name" character varying, "reward" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200824012300)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200823213737),
+(20200823213806),
+(20200823213904),
+(20200823224211),
+(20200824002110),
+(20200824003607),
+(20200824011450);
+
+[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-08-24 01:42:07.479842"], ["updated_at", "2020-08-24 01:42:07.479842"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "98704b6dfc1b564c0b27d6ac58c28c7ea7c3bce2"], ["created_at", "2020-08-24 01:42:07.489248"], ["updated_at", "2020-08-24 01:42:07.489248"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "bundles" CASCADE[0m
+  [1m[35m (9.7ms)[0m  [1m[35mCREATE TABLE "bundles" ("id" bigserial primary key, "name" character varying, "reward" character varying, "room_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "slots" integer)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "items" CASCADE[0m
+  [1m[35m (12.1ms)[0m  [1m[35mCREATE TABLE "items" ("id" bigserial primary key, "name" character varying, "purchase" boolean DEFAULT FALSE, "quantity" integer DEFAULT 1, "note" text DEFAULT '' NOT NULL, "bundle_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "quality" character varying DEFAULT 'any', "farm" boolean DEFAULT FALSE, "forage" boolean DEFAULT FALSE, "fish" boolean DEFAULT FALSE, "artisan" boolean DEFAULT FALSE, "mine" boolean DEFAULT FALSE, "monster" boolean DEFAULT FALSE, "crab_pot" boolean DEFAULT FALSE, "misc" boolean DEFAULT FALSE, "spring" boolean DEFAULT FALSE, "summer" boolean DEFAULT FALSE, "fall" boolean DEFAULT FALSE, "winter" boolean DEFAULT FALSE, "morning" boolean DEFAULT TRUE, "noon" boolean DEFAULT TRUE, "afternoon" boolean DEFAULT TRUE, "night" boolean DEFAULT TRUE, "location_river_town" boolean DEFAULT FALSE, "location_river_forest" boolean DEFAULT FALSE, "location_mountain_lake" boolean DEFAULT FALSE, "location_mines" boolean DEFAULT FALSE, "location_secret_woods" boolean DEFAULT FALSE, "location_cindersap_forest" boolean DEFAULT FALSE, "location_bus_stop" boolean DEFAULT FALSE, "location_beach" boolean DEFAULT FALSE, "location_mountain" boolean DEFAULT FALSE, "location_railroad" boolean DEFAULT FALSE, "location_quarry" boolean DEFAULT FALSE, "location_farm" boolean DEFAULT FALSE, "location_forest_pond" boolean DEFAULT FALSE, "location_witchs_swamp" boolean DEFAULT FALSE, "location_desert" boolean DEFAULT FALSE, "sun" boolean DEFAULT TRUE, "rain" boolean DEFAULT TRUE)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "rooms" CASCADE[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "rooms" ("id" bigserial primary key, "name" character varying, "reward" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200824012300)[0m
+  [1m[35m (2.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200823213737),
+(20200823213806),
+(20200823213904),
+(20200823224211),
+(20200824002110),
+(20200824003607),
+(20200824011450);
+
+[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-08-24 01:42:07.585784"], ["updated_at", "2020-08-24 01:42:07.585784"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2020-08-24 01:42:07.594866"], ["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "98704b6dfc1b564c0b27d6ac58c28c7ea7c3bce2"], ["created_at", "2020-08-24 01:42:07.607667"], ["updated_at", "2020-08-24 01:42:07.607667"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.8ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "reward", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Crafts"], ["reward", "Bridge Repair"], ["created_at", "2020-08-24 01:42:07.667765"], ["updated_at", "2020-08-24 01:42:07.667765"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "reward", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Pantry"], ["reward", "Greenhouse"], ["created_at", "2020-08-24 01:42:07.671997"], ["updated_at", "2020-08-24 01:42:07.671997"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "reward", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Fish Tank"], ["reward", "Glittering Boulder Removed"], ["created_at", "2020-08-24 01:42:07.675350"], ["updated_at", "2020-08-24 01:42:07.675350"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "reward", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Boiler"], ["reward", "Minecarts Repair"], ["created_at", "2020-08-24 01:42:07.679290"], ["updated_at", "2020-08-24 01:42:07.679290"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.3ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "reward", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Bulletin Board"], ["reward", "Friendship"], ["created_at", "2020-08-24 01:42:07.683049"], ["updated_at", "2020-08-24 01:42:07.683049"]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.7ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "reward", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Vault"], ["reward", "Bus Repair"], ["created_at", "2020-08-24 01:42:07.686264"], ["updated_at", "2020-08-24 01:42:07.686264"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mRoom Create (0.5ms)[0m  [1m[32mINSERT INTO "rooms" ("name", "reward", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Abandoned JojaMart"], ["reward", "Movie Theater"], ["created_at", "2020-08-24 01:42:07.692119"], ["updated_at", "2020-08-24 01:42:07.692119"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mRoom Load (0.5ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.3ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mRoom Load (0.2ms)[0m  [1m[34mSELECT "rooms".* FROM "rooms" WHERE "rooms"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.8ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Spring Foraging"], ["reward", "Spring Seeds"], ["room_id", 1], ["created_at", "2020-08-24 01:42:07.733081"], ["updated_at", "2020-08-24 01:42:07.733081"], ["slots", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Summer Foraging"], ["reward", "Summer Seeds"], ["room_id", 1], ["created_at", "2020-08-24 01:42:07.738644"], ["updated_at", "2020-08-24 01:42:07.738644"], ["slots", 3]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Fall Foraging"], ["reward", "Fall Seeds"], ["room_id", 1], ["created_at", "2020-08-24 01:42:07.744083"], ["updated_at", "2020-08-24 01:42:07.744083"], ["slots", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Winter Foraging"], ["reward", "Winter Seeds"], ["room_id", 1], ["created_at", "2020-08-24 01:42:07.748680"], ["updated_at", "2020-08-24 01:42:07.748680"], ["slots", 4]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Construction"], ["reward", "Charcoal Kiln"], ["room_id", 1], ["created_at", "2020-08-24 01:42:07.753556"], ["updated_at", "2020-08-24 01:42:07.753556"], ["slots", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Exotic Foraging"], ["reward", "Autumns Bounty"], ["room_id", 1], ["created_at", "2020-08-24 01:42:07.757727"], ["updated_at", "2020-08-24 01:42:07.757727"], ["slots", 5]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.4ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Spring Crops"], ["reward", "Speed-Gro"], ["room_id", 2], ["created_at", "2020-08-24 01:42:07.763117"], ["updated_at", "2020-08-24 01:42:07.763117"], ["slots", 4]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.4ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Summer Crops"], ["reward", "Quality Sprinkler"], ["room_id", 2], ["created_at", "2020-08-24 01:42:07.767126"], ["updated_at", "2020-08-24 01:42:07.767126"], ["slots", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Fall Crops"], ["reward", "Bee House"], ["room_id", 2], ["created_at", "2020-08-24 01:42:07.771348"], ["updated_at", "2020-08-24 01:42:07.771348"], ["slots", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Quality Crops"], ["reward", "Preserves Jar"], ["room_id", 2], ["created_at", "2020-08-24 01:42:07.775315"], ["updated_at", "2020-08-24 01:42:07.775315"], ["slots", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.4ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Animal"], ["reward", "Cheese Press"], ["room_id", 2], ["created_at", "2020-08-24 01:42:07.780265"], ["updated_at", "2020-08-24 01:42:07.780265"], ["slots", 5]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Artisan"], ["reward", "Keg"], ["room_id", 2], ["created_at", "2020-08-24 01:42:07.784401"], ["updated_at", "2020-08-24 01:42:07.784401"], ["slots", 6]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "River Fish"], ["reward", "Bait"], ["room_id", 3], ["created_at", "2020-08-24 01:42:07.790817"], ["updated_at", "2020-08-24 01:42:07.790817"], ["slots", 4]]
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Lake Fish"], ["reward", "Dressed Spinner"], ["room_id", 3], ["created_at", "2020-08-24 01:42:07.797159"], ["updated_at", "2020-08-24 01:42:07.797159"], ["slots", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Ocean Fish"], ["reward", "Warp Totem: Beach"], ["room_id", 3], ["created_at", "2020-08-24 01:42:07.802498"], ["updated_at", "2020-08-24 01:42:07.802498"], ["slots", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Night Fishing"], ["reward", "Small Glow Ring"], ["room_id", 3], ["created_at", "2020-08-24 01:42:07.806895"], ["updated_at", "2020-08-24 01:42:07.806895"], ["slots", 3]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Crab Pot"], ["reward", "Crab Pot"], ["room_id", 3], ["created_at", "2020-08-24 01:42:07.811136"], ["updated_at", "2020-08-24 01:42:07.811136"], ["slots", 5]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.2ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Specialty Fish"], ["reward", "Dish O The Sea"], ["room_id", 3], ["created_at", "2020-08-24 01:42:07.815097"], ["updated_at", "2020-08-24 01:42:07.815097"], ["slots", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Blacksmiths"], ["reward", "Furnace"], ["room_id", 4], ["created_at", "2020-08-24 01:42:07.819084"], ["updated_at", "2020-08-24 01:42:07.819084"], ["slots", 3]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.4ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Geologists"], ["reward", "Omni Geode"], ["room_id", 4], ["created_at", "2020-08-24 01:42:07.823377"], ["updated_at", "2020-08-24 01:42:07.823377"], ["slots", 4]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.4ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Adventurers"], ["reward", "Small Magnet Ring"], ["room_id", 4], ["created_at", "2020-08-24 01:42:07.827229"], ["updated_at", "2020-08-24 01:42:07.827229"], ["slots", 2]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Chefs"], ["reward", "Pink Cake"], ["room_id", 5], ["created_at", "2020-08-24 01:42:07.831696"], ["updated_at", "2020-08-24 01:42:07.831696"], ["slots", 6]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Dye"], ["reward", "Seed Maker"], ["room_id", 5], ["created_at", "2020-08-24 01:42:07.835776"], ["updated_at", "2020-08-24 01:42:07.835776"], ["slots", 6]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.4ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Field Research"], ["reward", "Recycling Machine"], ["room_id", 5], ["created_at", "2020-08-24 01:42:07.844931"], ["updated_at", "2020-08-24 01:42:07.844931"], ["slots", 4]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Fodder"], ["reward", "Heater"], ["room_id", 5], ["created_at", "2020-08-24 01:42:07.851035"], ["updated_at", "2020-08-24 01:42:07.851035"], ["slots", 3]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.4ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Enchanters"], ["reward", "Gold Bar"], ["room_id", 5], ["created_at", "2020-08-24 01:42:07.855340"], ["updated_at", "2020-08-24 01:42:07.855340"], ["slots", 4]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.4ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "2500"], ["reward", "Choclate Cake"], ["room_id", 6], ["created_at", "2020-08-24 01:42:07.860409"], ["updated_at", "2020-08-24 01:42:07.860409"], ["slots", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.4ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "5000"], ["reward", "Quality Fertilizer"], ["room_id", 6], ["created_at", "2020-08-24 01:42:07.865102"], ["updated_at", "2020-08-24 01:42:07.865102"], ["slots", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "10000"], ["reward", "Lightning Rod"], ["room_id", 6], ["created_at", "2020-08-24 01:42:07.868973"], ["updated_at", "2020-08-24 01:42:07.868973"], ["slots", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "25000"], ["reward", "Crystalarium"], ["room_id", 6], ["created_at", "2020-08-24 01:42:07.872783"], ["updated_at", "2020-08-24 01:42:07.872783"], ["slots", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBundle Create (0.3ms)[0m  [1m[32mINSERT INTO "bundles" ("name", "reward", "room_id", "created_at", "updated_at", "slots") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "The Missing"], ["reward", "Movie Theater"], ["room_id", 7], ["created_at", "2020-08-24 01:42:07.877671"], ["updated_at", "2020-08-24 01:42:07.877671"], ["slots", 5]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mBundle Load (0.3ms)[0m  [1m[34mSELECT "bundles".* FROM "bundles" WHERE "bundles"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBundle Load (0.2ms)[0m  [1m[34mSELECT "bundles".* FROM "bundles" WHERE "bundles"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBundle Load (0.3ms)[0m  [1m[34mSELECT "bundles".* FROM "bundles" WHERE "bundles"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mBundle Load (0.3ms)[0m  [1m[34mSELECT "bundles".* FROM "bundles" WHERE "bundles"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mBundle Load (0.3ms)[0m  [1m[34mSELECT "bundles".* FROM "bundles" WHERE "bundles"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mBundle Load (0.4ms)[0m  [1m[34mSELECT "bundles".* FROM "bundles" WHERE "bundles"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Create (1.7ms)[0m  [1m[32mINSERT INTO "items" ("name", "note", "bundle_id", "created_at", "updated_at", "farm", "forage", "spring", "location_secret_woods", "location_cindersap_forest", "location_bus_stop", "location_mountain", "location_railroad", "location_farm") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING "id"[0m  [["name", "Wild Horseradish"], ["note", "Can be farmed using Spring Seeds"], ["bundle_id", 1], ["created_at", "2020-08-24 01:42:07.944651"], ["updated_at", "2020-08-24 01:42:07.944651"], ["farm", true], ["forage", true], ["spring", true], ["location_secret_woods", true], ["location_cindersap_forest", true], ["location_bus_stop", true], ["location_mountain", true], ["location_railroad", true], ["location_farm", true]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Create (0.5ms)[0m  [1m[32mINSERT INTO "items" ("name", "purchase", "note", "bundle_id", "created_at", "updated_at", "farm", "forage", "spring", "location_secret_woods", "location_cindersap_forest", "location_bus_stop", "location_mountain", "location_railroad", "location_farm") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Daffodil"], ["purchase", true], ["note", "Can be farmed using Spring Seeds. Can buy from Pierre at Flower Dance"], ["bundle_id", 1], ["created_at", "2020-08-24 01:42:07.954016"], ["updated_at", "2020-08-24 01:42:07.954016"], ["farm", true], ["forage", true], ["spring", true], ["location_secret_woods", true], ["location_cindersap_forest", true], ["location_bus_stop", true], ["location_mountain", true], ["location_railroad", true], ["location_farm", true]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Create (0.4ms)[0m  [1m[32mINSERT INTO "items" ("name", "note", "bundle_id", "created_at", "updated_at", "farm", "forage", "spring", "location_secret_woods", "location_cindersap_forest", "location_bus_stop", "location_mountain", "location_railroad", "location_farm") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING "id"[0m  [["name", "Leek"], ["note", "Can be farmed using Spring Seeds."], ["bundle_id", 1], ["created_at", "2020-08-24 01:42:07.963331"], ["updated_at", "2020-08-24 01:42:07.963331"], ["farm", true], ["forage", true], ["spring", true], ["location_secret_woods", true], ["location_cindersap_forest", true], ["location_bus_stop", true], ["location_mountain", true], ["location_railroad", true], ["location_farm", true]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mItem Create (0.5ms)[0m  [1m[32mINSERT INTO "items" ("name", "purchase", "note", "bundle_id", "created_at", "updated_at", "farm", "forage", "spring", "location_secret_woods", "location_cindersap_forest", "location_bus_stop", "location_mountain", "location_railroad", "location_farm") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["name", "Dandelion"], ["purchase", true], ["note", "Can be farmed using Spring Seeds. Can buy from Pierre at Flower Dance"], ["bundle_id", 1], ["created_at", "2020-08-24 01:42:07.973559"], ["updated_at", "2020-08-24 01:42:07.973559"], ["farm", true], ["forage", true], ["spring", true], ["location_secret_woods", true], ["location_cindersap_forest", true], ["location_bus_stop", true], ["location_mountain", true], ["location_railroad", true], ["location_farm", true]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
