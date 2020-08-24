@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_23_224211) do
+ActiveRecord::Schema.define(version: 2020_08_24_012300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,22 +21,51 @@ ActiveRecord::Schema.define(version: 2020_08_23_224211) do
     t.integer "room_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "slots"
   end
 
   create_table "items", force: :cascade do |t|
     t.string "name"
-    t.string "type"
-    t.boolean "purchase"
-    t.string "location"
-    t.string "time"
-    t.string "weather"
-    t.string "season"
-    t.integer "quantity"
-    t.text "note"
+    t.boolean "purchase", default: false
+    t.integer "quantity", default: 1
+    t.text "note", default: "", null: false
     t.integer "bundle_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "quality"
+    t.string "quality", default: "any"
+    t.boolean "farm", default: false
+    t.boolean "forage", default: false
+    t.boolean "fish", default: false
+    t.boolean "artisan", default: false
+    t.boolean "mine", default: false
+    t.boolean "monster", default: false
+    t.boolean "crab_pot", default: false
+    t.boolean "misc", default: false
+    t.boolean "spring", default: false
+    t.boolean "summer", default: false
+    t.boolean "fall", default: false
+    t.boolean "winter", default: false
+    t.boolean "morning", default: true
+    t.boolean "noon", default: true
+    t.boolean "afternoon", default: true
+    t.boolean "night", default: true
+    t.boolean "location_river_town", default: false
+    t.boolean "location_river_forest", default: false
+    t.boolean "location_mountain_lake", default: false
+    t.boolean "location_mines", default: false
+    t.boolean "location_secret_woods", default: false
+    t.boolean "location_cindersap_forest", default: false
+    t.boolean "location_bus_stop", default: false
+    t.boolean "location_beach", default: false
+    t.boolean "location_mountain", default: false
+    t.boolean "location_railroad", default: false
+    t.boolean "location_quarry", default: false
+    t.boolean "location_farm", default: false
+    t.boolean "location_forest_pond", default: false
+    t.boolean "location_witchs_swamp", default: false
+    t.boolean "location_desert", default: false
+    t.boolean "sun", default: true
+    t.boolean "rain", default: true
   end
 
   create_table "rooms", force: :cascade do |t|
