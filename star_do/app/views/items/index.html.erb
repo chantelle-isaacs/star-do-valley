@@ -6,15 +6,44 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Type</th>
       <th>Purchase</th>
-      <th>Location</th>
-      <th>Time</th>
-      <th>Weather</th>
-      <th>Season</th>
       <th>Quantity</th>
       <th>Note</th>
       <th>Bundle</th>
+      <th>Quality</th>
+      <th>Farm</th>
+      <th>Forage</th>
+      <th>Fish</th>
+      <th>Artisan</th>
+      <th>Mine</th>
+      <th>Monster</th>
+      <th>Crab pot</th>
+      <th>Misc</th>
+      <th>Spring</th>
+      <th>Summer</th>
+      <th>Fall</th>
+      <th>Winter</th>
+      <th>Morning</th>
+      <th>Noon</th>
+      <th>Afternoon</th>
+      <th>Night</th>
+      <th>Location river town</th>
+      <th>Location river forest</th>
+      <th>Location mountain lake</th>
+      <th>Location mines</th>
+      <th>Location secret woods</th>
+      <th>Location cindersap forest</th>
+      <th>Location bus stop</th>
+      <th>Location beach</th>
+      <th>Location mountain</th>
+      <th>Location railroad</th>
+      <th>Location quarry</th>
+      <th>Location farm</th>
+      <th>Location forest pond</th>
+      <th>Location witchs swamp</th>
+      <th>Location desert</th>
+      <th>Sun</th>
+      <th>Rain</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,15 +52,44 @@
     <% @items.each do |item| %>
       <tr>
         <td><%= item.name %></td>
-        <td><%= item.type %></td>
         <td><%= item.purchase %></td>
-        <td><%= item.location %></td>
-        <td><%= item.time %></td>
-        <td><%= item.weather %></td>
-        <td><%= item.season %></td>
         <td><%= item.quantity %></td>
         <td><%= item.note %></td>
         <td><%= item.bundle_id %></td>
+        <td><%= item.quality %></td>
+        <td><%= item.farm %></td>
+        <td><%= item.forage %></td>
+        <td><%= item.fish %></td>
+        <td><%= item.artisan %></td>
+        <td><%= item.mine %></td>
+        <td><%= item.monster %></td>
+        <td><%= item.crab_pot %></td>
+        <td><%= item.misc %></td>
+        <td><%= item.spring %></td>
+        <td><%= item.summer %></td>
+        <td><%= item.fall %></td>
+        <td><%= item.winter %></td>
+        <td><%= item.morning %></td>
+        <td><%= item.noon %></td>
+        <td><%= item.afternoon %></td>
+        <td><%= item.night %></td>
+        <td><%= item.location_river_town %></td>
+        <td><%= item.location_river_forest %></td>
+        <td><%= item.location_mountain_lake %></td>
+        <td><%= item.location_mines %></td>
+        <td><%= item.location_secret_woods %></td>
+        <td><%= item.location_cindersap_forest %></td>
+        <td><%= item.location_bus_stop %></td>
+        <td><%= item.location_beach %></td>
+        <td><%= item.location_mountain %></td>
+        <td><%= item.location_railroad %></td>
+        <td><%= item.location_quarry %></td>
+        <td><%= item.location_farm %></td>
+        <td><%= item.location_forest_pond %></td>
+        <td><%= item.location_witchs_swamp %></td>
+        <td><%= item.location_desert %></td>
+        <td><%= item.sun %></td>
+        <td><%= item.rain %></td>
         <td><%= link_to 'Show', item %></td>
         <td><%= link_to 'Edit', edit_item_path(item) %></td>
         <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
