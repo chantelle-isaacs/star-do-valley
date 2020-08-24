@@ -330,14 +330,331 @@ spring_foraging_items.each do |attributes|
     puts "Creating spring foraging items #{attributes}"
 end
 
-# summer_foraging_items = [
-    
-# ]
+summer_foraging_items = [
+    {
+        name: 'Grape',
+        summer: true,
+        fall: true,
+        forage: true,
+        farm: true,
+        note: 'Can be farmed in the fall. Can be farmed from summer seeds',
+        location_farm:true,
+        location_secret_woods:true,
+        location_cindersap_forest:true, 
+        location_mountain:true,
+        location_railroad:true,
+        location_bus_stop:true
+    },
+    {
+        name: 'Spice Berry',
+        summer: true,
+        forage: true,
+        farm: true,
+        note: 'Can be farmed from summer seeds. Can be found in the farm cave if the fruit bat option is selected.',
+        location_farm:true,
+        location_secret_woods:true,
+        location_cindersap_forest:true, 
+        location_mountain:true,
+        location_railroad:true,
+        location_bus_stop:true
+    },
+    {
+        name: 'Sweet Pea',
+        summer: true,
+        forage: true,
+        farm: true,
+        note: 'Can be farmed from summer seeds.',
+        location_farm:true,
+        location_secret_woods:true,
+        location_cindersap_forest:true, 
+        location_mountain:true,
+        location_railroad:true,
+        location_bus_stop:true
+    }
+]
 
-# summer_foraging_items.each do |attributes|
-#     summer_foraging.items.create attributes
-#     puts "Creating summer foraging items #{attributes}"
-# end
+summer_foraging_items.each do |attributes|
+    summer_foraging.items.create attributes
+    puts "Creating summer foraging items #{attributes}"
+end
+
+fall_foraging_items = [
+    {
+        name: 'Common Mushroom',
+        fall: true,
+        spring:true,
+        forage: true,
+        farm: true,
+        note: 'Can be farmed from fall seeds. Can be foraged from the spring and fall in the Secret Woods. Can be found in the Farm Cave if mushroom option is selected.',
+        location_farm:true,
+        location_secret_woods:true,
+        location_cindersap_forest:true, 
+        location_mountain:true,
+        location_railroad:true,
+        location_bus_stop:true
+    },
+    {
+        name: 'Wild Plum',
+        fall: true,
+        forage: true,
+        farm: true,
+        note: 'Can be farmed from fall seeds. Can be found in the Farm Cave if fruit bat option is selected.',
+        location_farm:true,
+        location_secret_woods:true,
+        location_cindersap_forest:true, 
+        location_mountain:true,
+        location_railroad:true,
+        location_bus_stop:true
+    },
+    {
+        name: 'Hazelnut',
+        fall: true,
+        forage: true,
+        farm: true,
+        note: 'Can be farmed from fall seeds.',
+        location_farm:true,
+        location_secret_woods:true,
+        location_cindersap_forest:true, 
+        location_mountain:true,
+        location_railroad:true,
+        location_bus_stop:true
+    },
+    {
+        name: 'Blackberry',
+        fall: true,
+        forage: true,
+        farm: true,
+        note: 'Can be farmed from fall seeds.  Can be found in the Farm Cave if fruit bat option is selected.',
+        location_farm:true,
+        location_secret_woods:true,
+        location_cindersap_forest:true, 
+        location_mountain:true,
+        location_railroad:true,
+        location_bus_stop:true
+    }
+]
+
+
+fall_foraging_items.each do |attributes|
+    fall_foraging.items.create attributes
+    puts "Creating fall foraging items #{attributes}"
+end
+
+
+winter_foraging_items = [
+    {
+        name: 'Winter Root',
+        winter: true,
+        forage: true,
+        farm: true,
+        note: 'Can be farmed from winter seeds. Found by tilling soil or artifact spots. Dropped by blue slimes on floors 47 through 79 of the mines.',
+        location_farm:true,
+        location_secret_woods:true,
+        location_cindersap_forest:true, 
+        location_mountain:true,
+        location_railroad:true,
+        location_bus_stop:true,
+        location_mines: true
+    },
+    {
+        name: 'Crystal Fruit',
+        winter: true,
+        forage: true,
+        farm: true,
+        note: 'Can be farmed from winter seeds. Dropped by dust sprites on floors 47 through 79 of the mines.',
+        location_farm:true,
+        location_secret_woods:true,
+        location_cindersap_forest:true, 
+        location_mountain:true,
+        location_railroad:true,
+        location_bus_stop:true,
+        location_mines: true
+    },
+    {
+        name: 'Snow Yam',
+        winter: true,
+        forage: true,
+        farm: true,
+        note: 'Can be farmed from winter seeds. Found by tilling soil or artifact spots.',
+        location_farm:true,
+        location_secret_woods:true,
+        location_cindersap_forest:true, 
+        location_mountain:true,
+        location_railroad:true,
+        location_bus_stop:true
+    },
+    {
+        name: 'Crocus',
+        winter: true,
+        forage: true,
+        farm: true,
+        note: 'Can be farmed from winter seeds.',
+        location_farm:true,
+        location_secret_woods:true,
+        location_cindersap_forest:true, 
+        location_mountain:true,
+        location_railroad:true,
+        location_bus_stop:true
+    }
+]
+
+winter_foraging_items.each do |attributes|
+    winter_foraging.items.create attributes
+    puts "Creating winter foraging items #{attributes}"
+end
+
+
+construction_items = [
+    {
+        name: 'Wood',
+        summer: true,
+        fall: true,
+        spring: true,
+        winter: true,
+        misc: true,
+        quantity: 198,
+        note: 'Construction bundle takes two slots of 99 wood.',
+        location_farm:true,
+        location_secret_woods:true,
+        location_cindersap_forest:true, 
+        location_mountain:true,
+        location_railroad:true,
+        location_bus_stop:true,
+        location_quarry: true,
+        location_desert: true
+    },
+    {
+        name: 'Stone',
+        summer: true,
+        fall: true,
+        spring: true,
+        winter: true,
+        misc: true,
+        quantity: 99,
+        location_farm:true,
+        location_secret_woods:true,
+        location_cindersap_forest:true, 
+        location_mountain:true,
+        location_railroad:true,
+        location_bus_stop:true,
+        location_quarry: true,
+        location_desert: true,
+        location_mines: true
+    },
+    {
+        name: 'Hardwood',
+        summer: true,
+        fall: true,
+        spring: true,
+        winter: true,
+        misc: true,
+        quantity: 10,
+        note: 'Upgraded axe required to chop large stumps or large logs. Can be found by smashing crates in the mines.',
+        location_farm:true,
+        location_secret_woods:true,
+        location_mines: true
+    }
+]
+
+construction_items.each do |attributes|
+    construction.items.create attributes
+    puts "Creating construction items #{attributes}"
+end
+
+exotic_foraging_items = [
+    {
+        name: 'Coconut',
+        summer: true,
+        fall: true,
+        spring: true,
+        winter: true,
+        forage: true,
+        location_desert: true,
+        note: 'Must unlock the bus to travel to the desert by completing the Vault Room.'
+    },
+    {
+        name: 'Cactus Fruit',
+        summer: true,
+        fall: true,
+        spring: true,
+        winter: true,
+        forage: true,
+        location_desert: true,
+        note: 'Must unlock the bus to travel to the desert by completing the Vault Room.'
+    },
+    {
+        name: 'Cave Carrot',
+        summer: true,
+        fall: true,
+        spring: true,
+        winter: true,
+        forage: true,
+        location_mines: true,
+        note: 'Find by smashing boxes or tilling soil in the mines.'
+    },    
+    {
+        name: 'Red Mushroom',
+        summer: true,
+        fall: true,
+        spring: true,
+        winter: true,
+        forage: true,
+        location_mines: true,
+        location_secret_woods: true,
+        note: 'Found by foraging in the mines. Can be found in the Farm Cave if mushroom option is selected. Can be found in Summer or Fall in the Secret Woods.'
+    },
+    {
+        name: 'Purple Mushroom',
+        summer: true,
+        fall: true,
+        spring: true,
+        winter: true,
+        forage: true,
+        location_mines: true,
+        note: 'Found by foraging in the mines. Can be found in the Farm Cave if mushroom option is selected.'
+    },
+    {
+        name: 'Maple Syrup',
+        summer: true,
+        fall: true,
+        spring: true,
+        winter: true,
+        forage: true,
+        location_farm: true,
+        note: 'Use Tapper on Maple Tree.'
+    },
+    {
+        name: 'Oak Resin',
+        summer: true,
+        fall: true,
+        spring: true,
+        winter: true,
+        forage: true,
+        location_farm: true,
+        note: 'Use Tapper on Oak Tree.'
+    },
+    {
+        name: 'Pine Tar',
+        summer: true,
+        fall: true,
+        spring: true,
+        winter: true,
+        forage: true,
+        location_farm: true,
+        note: 'Use Tapper on Pine Tree.'
+    },
+    {
+        name: 'Morel',
+        spring: true,
+        forage:true,
+        location_secret_woods: true
+    }
+]
+
+exotic_foraging_items.each do |attributes|
+    exotic_foraging.items.create attributes
+    puts "Creating exotic foraging items #{attributes}"
+end
 
 # {
 #         name: '',
